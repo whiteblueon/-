@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        .clearfix::after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        .container{
+            width: 300px;
+            margin: 0 auto;
+            margin-top: 100px;
+            border: 1px solid;
+            background: #ccc;
+        }
+        #tab{
+            width: 300px;
+            height: 200px;
+           
+        }
+        #menu li{
+            float: left;
+            margin-right:10px;
+            width: 90px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            background: #999;
+            cursor: pointer;
+        }
+        #menu .naa{
+            background: #000;
+            color: #fff;
+        }
+        #tab div{
+            display: none;
+        }
+        #tab .nbb{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <ul id="menu" class='clearfix'>
+            <li class="naa">html</li>
+            <li>css</li>
+            <li>javascript</li>
+        </ul>
+        <div id='tab'>
+            <div class="nbb">111</div>
+            <div>222</div>
+            <div>333</div>
+        </div>
+    </div>
+
+
+    <script>
+        var oMenu= document.getElementById('menu');
+        var oTab= document.getElementById('tab');
+        var aLi=oMenu.getElementsByTagName('li');
+        var aDiv=oTab.getElementsByTagName('div');
+        for (var i=0;i<aLi.length;i++){
+            aLi[i].index=i;
+            aLi[i].onclick=function(){
+                for(var i=0;i<aLi.length;i++){//清空所有li的className
+                    aLi[i].className='';
+                    aDiv[i].className='';
+                }
+                this.className='naa';
+                aDiv[this.index].className='nbb';               
+            }
+        }
+
+
+    </script>
+
+
+
+</body>
+</html>
