@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        #container{
+            border: 1px solid #000;
+            width: 320px;
+            height: 200px;
+            margin: 100px auto;
+            position: relative;
+        }
+        #tab{
+            width: 440px;
+            height: 100px;
+        }
+        #tab li{
+            width: 100px;
+            height: 100px;
+            background: #000;
+            color: #fff;
+            text-align: center;
+            line-height: 100px;
+            float: left;
+            font-size: 40px;
+            margin-right: 10px;
+        }
+        #arrows{
+            width: 140x;
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            margin-left: -65px;
+        }
+        #arrows span{
+            width: 60px;
+            height: 20px;
+            background: #ccc;
+            font-size: 15px;
+            float: left;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <ul id="tab">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+        <div id='arrows'>
+            <span id="left">点击向左</span>
+            <span id="right">点击向右</span>
+        </div>
+    </div>
+
+    <script>
+        var oTab=document.getElementById('tab');
+        var oLeft=document.getElementById('left');
+        var oRight=document.getElementById('right');
+        setInterval(function(){
+            var timer= 
+            oLeft.onclick=oRight.onclick=function(){
+                if(this==oLeft){
+
+                    oTab.style.left=oTab.offsetLeft-10+'px'
+                }
+            }
+        },100)
+    </script>
+    
+</body>
+</html>
