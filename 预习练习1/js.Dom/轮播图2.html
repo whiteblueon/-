@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        #container{
+            position: relative;
+            margin: 0 auto;
+            margin-top: 100px;
+            width: 340px;
+            height: 200px;
+        }
+        #container #imgs{
+            width: 1750px;
+        }
+        #container #imgs img{
+            width: 340px;
+            height: 200px;
+            float: left;
+            margin-right: 10px;
+            /* display: none; */
+        }
+        #container #imgs .naa{
+            display: block;
+        }
+        #container .div1{
+            position: absolute;
+            left: 10px;
+            bottom: 10px;
+        }
+        #container div span,#container ul li{
+            float: left;
+            background: #000;
+            color: #fff;
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            line-height: 20px;
+            margin-right: 5px;
+            cursor: pointer;
+        }
+        #container #tab{
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+        }
+        #container #tab .nbb{
+            background: #ff6600;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    
+
+
+
+    <div id="container">
+        <div id="imgs">
+            <img src="../img/1.jpg" class="naa">
+            <img src="../img/2.jpg">
+            <img src="../img/3.jpg">
+            <img src="../img/4.jpg">
+            <img src="../img/1.jpg">
+        </div>
+        <ul id="tab">
+            <li class="nbb">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+        <div class="div1">
+            <span id="prev">&lt;</span>
+            <span id="next">&gt;</span>
+        </div>
+    </div>
+
+
+    <script>
+        var oContainer=document.getElementById('container');
+        var oImgs=document.getElementById("imgs");
+        var oTab= document.getElementById('tab');
+        var oPrev=document.getElementById('prev');
+        var oNext=document.getElementById('next');
+        var aLi=oTab.getElementsByTagName('li');
+        var aImg=oImgs.getElementsByTagName('img')
+        var iNowIndex=0;
+        var timer;
+        
+        play();
+        oContainer.onmouseover=function(){
+            clearInterval(timer);
+        }
+        oContainer.onmouseout=function(){
+             play();
+        }       
+        function play(){
+             timer=setInterval(function(){           
+                for(var i=0;i<aLi.length;i++){                
+                    aImg[i].className='';
+                    aLi[i].className='';
+                }           
+                iNowIndex++;       
+                if(iNowIndex>aImg.length-1){
+                    iNowIndex=0;
+                }
+                aImg[iNowIndex].className='naa';
+                aLi[iNowIndex].className='nbb';
+            },1000)
+        }
+        oPrev.onclick=oNext.onclick=function(){
+                if(this===oPrev){
+                    iNowIndex--;
+                    for(var i=0;i<aLi.length;i++){                
+                        aImg[i].className='';
+                        aLi[i].className='';
+                    }
+                    if(iNowIndex<0){
+                        iNowIndex=aLi.length-1;
+                    }
+                    aImg[iNowIndex].className='naa';
+                    aLi[iNowIndex].className='nbb';
+                }else{
+                    iNowIndex++
+                    for(var i=0;i<aLi.length;i++){                
+                        aImg[i].className='';
+                        aLi[i].className='';
+                    }
+                    if(iNowIndex>=aLi.length){
+                        iNowIndex=0;
+                    }
+                    aImg[iNowIndex].className='naa';
+                    aLi[iNowIndex].className='nbb';
+                }
+            }
+            for(var i = 0;i<aLi.length;i++){
+                aLi[i].index=i; 
+                aLi[i].onmouseover=function(){                
+                for(var i=0;i<aLi.length;i++){                                     
+                        aImg[i].className='';
+                        aLi[i].className='';
+                }
+                this.className='nbb';
+                aImg[this.index].className='naa'
+                }
+            }
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

@@ -19,10 +19,14 @@
             height: 200px;
             margin: 100px auto;
             position: relative;
+            overflow: hidden;
         }
         #tab{
             width: 440px;
             height: 100px;
+            position: absolute;
+            top: 0;
+            margin: 0;
         }
         #tab li{
             width: 100px;
@@ -50,6 +54,7 @@
             float: left;
             margin-right: 10px;
             cursor: pointer;
+            text-align: center;
         }
     </style>
 </head>
@@ -71,15 +76,24 @@
         var oTab=document.getElementById('tab');
         var oLeft=document.getElementById('left');
         var oRight=document.getElementById('right');
+        oTab.innerHTML+=oTab.innerHTML;
+        oTab.style.width=oTab.offsetWidth*2+'px';
+        var deonction= 10 ;
         setInterval(function(){
-            var timer= 
-            oLeft.onclick=oRight.onclick=function(){
-                if(this==oLeft){
-
-                    oTab.style.left=oTab.offsetLeft-10+'px'
-                }
+           oTab.style.left=oTab.offsetLeft-deonction+'px';
+           if(-oTab.offsetLeft==oTab.offsetWidth/2){
+               oTab.style.left=0;
+           }else if(-oTab.offsetLeft<0){
+               oTab.style.left=-oTab.offsetWidth/2+10+'px';
+           }
+        },100);
+        oLeft.onclick=oRight.onclick=function(){
+            if(this==oLeft){
+                deonction=10;
+            }else {
+                deonction=-10;
             }
-        },100)
+        }
     </script>
     
 </body>
