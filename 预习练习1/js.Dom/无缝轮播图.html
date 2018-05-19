@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        #container{
+            width: 340px;
+            height: 200px;
+            position: relative;
+            margin: 100px auto;
+            /* overflow: hidden; */
+        }
+        #imgs{
+            width: 1750px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        #imgs img{
+            width: 340px;
+            height: 200px;
+            float: left;
+            margin-right: 10px;
+        }
+        #tab{
+            position: absolute;
+            right: 20px;
+            bottom: 10px;
+        }
+        #tab li{
+            background: #000;
+            color: #fff;
+            float: left;
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            text-align: center;
+            margin-right: 5px;
+        }
+        #tab .change{
+            background: #ff6600;
+            color: #000;
+        }
+        #switch{
+            position: absolute;
+            left: 20px;
+            bottom: 10px;
+        }
+        #switch span{
+            background: #000;
+            color: #fff;
+            float: left;
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            text-align: center;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="imgs">
+            <img src="../img/1.jpg">
+            <img src="../img/2.jpg">
+            <img src="../img/3.jpg">
+            <img src="../img/4.jpg">
+            <img src="../img/1.jpg">
+        </div>
+        <ul id="tab">
+            <li class="change">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+        <div id="switch">
+            <span id="prev">&lt;</span>
+            <span id="next">&gt;</span>
+        </div>
+    </div>
+
+
+    <script>
+        var oContainer=document.getElementById('container');
+        var oTab=document.getElementById('tab');
+        var oSwitch=document.getElementById('switch');
+        var oImgs=document.getElementById('img');
+        var aImg=oImgs.getElementsByTagName('img')
+    </script>
+</body>
+</html>
