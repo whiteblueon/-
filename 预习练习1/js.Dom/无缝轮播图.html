@@ -99,13 +99,32 @@
         var aImg=oImgs.getElementsByTagName('img');
         var iNowIndex=0;
         var timer;
-        // setInterval(function(){
-        //     oImgs.style.left=-oImgs.offsetLeft-340+'px';
-           
-        // },500)
+        var timer2
+        play();
+        oContainer.onmouseover=function(){
+            clearInterval(timer2)
+        }
+        oContainer.onmouseout=function(){
+            play()
+        }
+        function play(){
+                 timer2=setInterval(function(){
+                iNowIndex=-340;
+                if(oImgs.offsetLeft<=-1360){
+                    oImgs.style.left=0+'px';
+                }
+                timer=setInterval(function(){
+                    oImgs.style.left=oImgs.offsetLeft-20+'px';
+                    if((oImgs.offsetLeft+iNowIndex)%340==0){
+                    clearInterval(timer)
+                } 
+                },50)
+            },2000)
+        };//怎么让他在中间停
         oPrev.onclick=oNext.onclick=function(){
             if(this===oPrev){
-                clearInterval(timer)
+                clearInterval(timer);
+                clearInterval(timer2);
                 iNowIndex=340;
                 if(oImgs.offsetLeft>=0){
                     oImgs.style.left=-1360+'px';
