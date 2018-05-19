@@ -30,7 +30,6 @@
             width: 340px;
             height: 200px;
             float: left;
-            margin-right: 10px;
         }
         #tab{
             position: absolute;
@@ -94,8 +93,46 @@
         var oContainer=document.getElementById('container');
         var oTab=document.getElementById('tab');
         var oSwitch=document.getElementById('switch');
-        var oImgs=document.getElementById('img');
-        var aImg=oImgs.getElementsByTagName('img')
+        var oPrev=document.getElementById('prev');
+        var oNext=document.getElementById('next');
+        var oImgs=document.getElementById('imgs');
+        var aImg=oImgs.getElementsByTagName('img');
+        var iNowIndex=0;
+        var timer;
+        // setInterval(function(){
+        //     oImgs.style.left=-oImgs.offsetLeft-340+'px';
+           
+        // },500)
+        oPrev.onclick=oNext.onclick=function(){
+            if(this===oPrev){
+                clearInterval(timer)
+                iNowIndex=340;
+                if(oImgs.offsetLeft>=0){
+                    oImgs.style.left=-1360+'px';
+                }
+                timer=setInterval(function(){
+                    oImgs.style.left=oImgs.offsetLeft+20+'px';
+                    if((oImgs.offsetLeft+iNowIndex)%340==0){
+                    clearInterval(timer)
+                } 
+                },50)
+                        
+            }else{
+                clearInterval(timer)
+                iNowIndex=-340;
+                if(oImgs.offsetLeft<=-1360){
+                    oImgs.style.left=0+'px';
+                }
+                timer=setInterval(function(){
+                    oImgs.style.left=oImgs.offsetLeft-20+'px';
+                    if((oImgs.offsetLeft+iNowIndex)%340==0){
+                    clearInterval(timer)
+                } 
+                },50)
+                 
+                
+            }
+        }
     </script>
 </body>
 </html>
