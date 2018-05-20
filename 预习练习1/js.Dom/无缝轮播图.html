@@ -19,9 +19,10 @@
             position: relative;
             margin: 100px auto;
             /* overflow: hidden; */
+            /* border: 1px solid #000; */
         }
         #imgs{
-            width: 1750px;
+            width: 1700px;
             position: absolute;
             top: 0;
             left: 0;
@@ -97,7 +98,9 @@
         var oNext=document.getElementById('next');
         var oImgs=document.getElementById('imgs');
         var aImg=oImgs.getElementsByTagName('img');
+        var aLi=oTab.getElementsByTagName('li');
         var iNowIndex=0;
+        var iNowlength=0;
         var timer;
         var timer2
         play();
@@ -108,49 +111,67 @@
             play()
         }
         function play(){
-                 timer2=setInterval(function(){
-                iNowIndex=-340;
-                if(oImgs.offsetLeft<=-1360){
+                timer2=setInterval(function(){
+                iNowlength=-(oImgs.offsetWidth/aImg.length);
+                if(oImgs.offsetLeft<=-(oImgs.offsetWidth/aImg.length)*(aImg.length-1)){
                     oImgs.style.left=0+'px';
                 }
                 timer=setInterval(function(){
                     oImgs.style.left=oImgs.offsetLeft-20+'px';
-                    if((oImgs.offsetLeft+iNowIndex)%340==0){
+                    if((oImgs.offsetLeft+iNowlength)%(oImgs.offsetWidth/aImg.length)==0){
                     clearInterval(timer)
                 } 
-                },50)
+                },30)
             },2000)
         };//怎么让他在中间停
         oPrev.onclick=oNext.onclick=function(){
             if(this===oPrev){
                 clearInterval(timer);
                 clearInterval(timer2);
-                iNowIndex=340;
+                iNowIndex=(oImgs.offsetWidth/aImg.length);
                 if(oImgs.offsetLeft>=0){
-                    oImgs.style.left=-1360+'px';
+                    oImgs.style.left=-(oImgs.offsetWidth/aImg.length)*(aImg.length-1)+'px';
                 }
                 timer=setInterval(function(){
                     oImgs.style.left=oImgs.offsetLeft+20+'px';
-                    if((oImgs.offsetLeft+iNowIndex)%340==0){
+                    if((oImgs.offsetLeft+iNowlength)%(oImgs.offsetWidth/aImg.length)==0){
                     clearInterval(timer)
                 } 
-                },50)
+                },30)
                         
             }else{
                 clearInterval(timer)
-                iNowIndex=-340;
-                if(oImgs.offsetLeft<=-1360){
+                iNowlength=-(oImgs.offsetWidth/aImg.length);
+                if(oImgs.offsetLeft<=-(oImgs.offsetWidth/aImg.length)*(aImg.length-1)){
                     oImgs.style.left=0+'px';
                 }
                 timer=setInterval(function(){
                     oImgs.style.left=oImgs.offsetLeft-20+'px';
-                    if((oImgs.offsetLeft+iNowIndex)%340==0){
+                    if((oImgs.offsetLeft+iNowlength)%(oImgs.offsetWidth/aImg.length)==0){
                     clearInterval(timer)
                 } 
-                },50)                               
+                },30)                               
             }
         }
-        for(var i =0;i<ali.lenth;i++)
+        for(var i= 0;i<aLi.length;i++){
+            aLi[i].index= i ;
+            aLi[i].onmouseover=function(){
+                iNowIndex=this.index;
+                if(this.index<(-oImgs.offsetLeft/(oImgs.offsetWidth/aImg.length))){
+                    iNowIndex=(oImgs.offsetWidth/aImg.length);
+                    if(oImgs.offsetLeft>=0){
+                        oImgs.style.left=-(oImgs.offsetWidth/aImg.length)*(aImg.length-1)+'px';
+                    }
+                    timer=setInterval(function(){
+                        oImgs.style.left=oImgs.offsetLeft+20+'px';
+                        if((oImgs.offsetLeft+iNowlength)%(oImgs.offsetWidth/aImg.length)==((-oImgs.offsetLeft/(oImgs.offsetWidth/aImg.length))-this.index-1)){
+                        clearInterval(timer)
+                        } 
+                    },30)
+                }
+            }
+        }
+        console.log(aImg[i].offsetWidth))
     </script>
 </body>
 </html>

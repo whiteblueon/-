@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        #container{
+            position: relative;
+            width: 340px;
+            height: 200px;
+            margin: 100px auto;
+        }
+        #imgs{
+            width: 340px;
+            height: 200px;
+            position: relative;
+        }
+        #imgs img{
+            width: 340px;
+            height: 200px;
+            float: left;
+            opacity: 1;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        #imgs .fadein{
+            z-index:100 ;
+        }
+        #tab{
+            position: absolute;
+            right: 20px;
+            bottom: 10px;
+            z-index: 10000;
+        }
+        #switch{
+            position: absolute;
+            left: 20px;
+            bottom: 10px;
+            z-index: 10000;
+        }
+        #tab li,#switch span{
+            float: left;
+            height: 20px;
+            width: 20px;
+            background: #000;
+            color: #fff;
+            text-align: center;
+            line-height: 20px;
+            margin-right: 5px;
+            cursor: pointer;
+            
+        }
+        #tab .change{
+            background: #ff6600;
+            color: #000;
+        }
+        
+    </style>
+</head>
+<body>
+        <div id="container">
+            <div id='imgs'>
+                <img src="../img/1.jpg" class="fadein">
+                <img src="../img/2.jpg">
+                <img src="../img/3.jpg">
+                <img src="../img/4.jpg">
+            </div>
+        <ul id="tab">
+            <li class="change">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+        <div id="switch">
+            <span id="prev">&lt;</span>
+            <span id="next">&gt;</span>
+        </div>
+    </div>
+
+
+    <script>
+        var oImgs=document.getElementById('imgs');
+        var oTab=document.getElementById('tab');
+        var oPrev=document.getElementById('prev');
+        var oNext=document.getElementById('next');
+        var aImg=oImgs.getElementsByTagName('img');
+        var aLi=oTab.getElementsByTagName('li');
+        var iNowIndex=0;
+        var timer;
+        var timer2;
+
+        // oPrev.onclick=oNext.onclick=function(){
+        //     if(this==oPrev){
+        //         iNowIndex--;
+        //         if(iNowIndex==-1){
+        //             iNowIndex=3
+        //         }
+        //         for(var i = 0;i<aLi.length;i++){
+        //             aLi[i].className='';
+        //             timer2=setInterval(function(){
+        //             aImg[iNowIndex+1].style.opacity-=0.05;
+        //             if( aImg[iNowIndex+1].style.opacity=0){
+        //                 clearInterval(timer2)
+        //             }
+ 
+        //         },1000)
+                    
+        //         }
+        //         // if(iNowIndex==-1){
+        //         //     iNowIndex=3
+        //         // }
+        //         timer=setInterval(function(){
+        //             aImg[iNowIndex].style.opacity+=0.05;
+        //             if( aImg[iNowIndex].style.opacity=1){
+        //                 clearInterval(timer)
+        //             }
+        //         },100)
+        //         aLi[iNowIndex].className='change'
+        //     }
+        // }
+        for(var i=0;i<aLi.length;i++){
+            aLi[i].index=i;
+            aLi[i].onmouseover=function(){
+                this.index=iNowIndex;
+                for(var i=0;i<aLi.length;i++){
+                    aLi[i].className=''; 
+                    timer=setInterval(function(){
+                        for(var i=0;i<aLi.length;i++){
+                            aImg[i].style.opacity-=0.1;
+                            if(aImg[iNowIndex].style.opacity==0){
+                                clearInterval(timer);
+                            }
+                        }
+                    },1000)                 
+                }
+            this.className='change';
+            timer2=setInterval(function(){
+                aImg[iNowIndex].style.opacity+=0.1;
+                if(aImg[iNowIndex].style.opacity==1)
+                {
+                    clearInterval(timer2);
+                }
+                // aImg[iNowIndex].className='fadein'
+            },1000)           
+            }
+        }
+    </script>
+</body>
+</html>
