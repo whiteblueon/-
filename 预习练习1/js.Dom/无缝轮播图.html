@@ -153,25 +153,25 @@
                 },30)                               
             }
         }
-        for(var i= 0;i<aLi.length;i++){
-            aLi[i].index= i ;
-            aLi[i].onmouseover=function(){
-                iNowIndex=this.index;
-                if(this.index<(-oImgs.offsetLeft/(oImgs.offsetWidth/aImg.length))){
-                    iNowIndex=(oImgs.offsetWidth/aImg.length);
-                    if(oImgs.offsetLeft>=0){
-                        oImgs.style.left=-(oImgs.offsetWidth/aImg.length)*(aImg.length-1)+'px';
-                    }
-                    timer=setInterval(function(){
-                        oImgs.style.left=oImgs.offsetLeft+20+'px';
-                        if((oImgs.offsetLeft+iNowlength)%(oImgs.offsetWidth/aImg.length)==((-oImgs.offsetLeft/(oImgs.offsetWidth/aImg.length))-this.index-1)){
-                        clearInterval(timer)
-                        } 
-                    },30)
-                }
-            }
-        }
-        console.log(aImg[i].offsetWidth))
+        // for(var i= 0;i<aLi.length;i++){
+        //     aLi[i].index= i ;
+        //     aLi[i].onmouseover=function(){
+        //         iNowIndex=this.index;
+        //         if(this.index<(-oImgs.offsetLeft/(oImgs.offsetWidth/aImg.length))){
+        //             iNowIndex=(oImgs.offsetWidth/aImg.length);
+        //             if(oImgs.offsetLeft>=0){
+        //                 oImgs.style.left=-(oImgs.offsetWidth/aImg.length)*(aImg.length-1)+'px';
+        //             }
+        //             timer=setInterval(function(){
+        //                 oImgs.style.left=oImgs.offsetLeft+20+'px';
+        //                 if((oImgs.offsetLeft+iNowlength)%(oImgs.offsetWidth/aImg.length)==((-oImgs.offsetLeft/(oImgs.offsetWidth/aImg.length))-this.index-1)){
+        //                 clearInterval(timer)
+        //                 } 
+        //             },30)
+        //         }
+        //     }
+        // }
+        // console.log(aImg[i].offsetWidth))
     </script>
 </body>
 </html>
