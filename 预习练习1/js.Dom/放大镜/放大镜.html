@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        img{
+            border: 0;
+        }
+        #small{
+            position: relative;
+            cursor: move;
+            float: left;
+            width: 400px;
+            height: 400px;
+            margin-right: 10px;
+            margin-left: 10px;
+        }
+        #drag{
+            width: 200px;
+            height: 200px;
+            background: #ccc;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: none;
+            opacity: 0.5;
+            filter: alpha(opacity=60)
+        
+        }
+        #mask{
+            opacity: 0;
+            filter: alpha(opacity=0);
+            width: 400px;
+            height: 400px;
+            background:#ff6600;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        #big{
+            float: left;
+            width: 400px;
+            height: 400px;
+            position: relative;
+            overflow: hidden;
+            display: none;
+        }
+        #big-pic{
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="small">
+        <img src="1.jpg">
+        <div id="drag"></div>
+        <div id="mask"></div>
+    </div>
+    <div id="big">
+        <img src="2.jpg" id="big-pic">
+    </div>
+
+    <script>
+        var oSmall=document.getElementById('small');
+        var oDrag=document.getElementById('drag');
+        var oBig=document.getElementById('big');
+        var oPic=document.getElementById('big-pic');
+        oSmall.onmouseover=function(){           
+            oDrag.style.display='block';
+            oBig.style.display='block';
+            oSmall.onmousemove=function(e){
+                e=e||window.event;
+                var left=e.clientX-oDrag.offsetWidth/2;
+                var top=e.clientY-oDrag.offsetHeight/2;
+                if(top<0){
+                    top=0
+                }
+                if(left<0){
+                    left=0
+                }
+                if(left>oSmall.offsetWidth-oDrag.offsetWidth){
+                    left=oSmall.offsetWidth-oDrag.offsetWidth;
+                }
+                if(top>oSmall.offsetHeight-oDrag.offsetHeight){
+                    top=oSmall.offsetHeight-oDrag.offsetHeight;
+                }
+                var oPix=left*(oPic.offsetWidth-oBig.offsetWidth)/(oSmall.offsetWidth-oDrag.offsetWidth);
+                var oPiy=top*(oPic.offsetHeight-oBig.offsetHeight)/(oSmall.offsetHeight-oDrag.offsetHeight);
+                oDrag.style.left=left+'px';
+                oDrag.style.top=top+'px';
+                oPic.style.left=-oPix+'px';
+                oPic.style.top=-oPiy+'px';
+            }           
+        };
+        oSmall.onmouseout=function(){
+            oDrag.style.display='none';
+            oBig.style.display='none';
+        }
+        
+    </script>
+</body>
+</html>
