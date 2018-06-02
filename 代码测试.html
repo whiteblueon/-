@@ -21,8 +21,8 @@
             }else if(elem.attachEvent){
                 elem.foo=function(){
                     handler.call(elem);
-                }
-                elem.attachEvent('on'+type,elem.foo)
+                };
+                elem.attachEvent('on'+type,elem.foo);
             }else{
                 elem['on'+type]=handler;
             }
