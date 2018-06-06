@@ -40,7 +40,7 @@
             return elem&&elem.nodeType==1?elem:next(elem);
         }
         
-        
+        //获取事件源内容
         var oUl=document.getElementById('ul1');
         oUl.onclick=function(e){
             var target;
@@ -51,6 +51,17 @@
             }
              console.log(target.innerHTML)
         };
+        
+        //后生成元素绑定事件源问题
+        var oUl=document.getElementById('ul1');
+        oUl.innerHTML+= '<li>'+Math.random()+'</li>';
+
+
+        function addEvent(elem , type , handler , useCapture){
+            if(elem.addEventListener){
+                elem.addEventListener()
+            }
+        }
     </script>
 </body>
 </html>
