@@ -26,8 +26,11 @@
         $('[name="items"]').on('click',function(){
             var flag=true;
             $('[name="items"]').each(function(index,elem){
-            if(){}
+            if(!this.checked){
+                flag=false;
+            }
         });
+        $('#CheckedAll').prop('checked',flag)
         })
         
 
