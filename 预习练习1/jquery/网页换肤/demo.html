@@ -54,6 +54,37 @@
 <!--   引入jQuery的cookie插件 -->
 <script src="js/jquery.cookie.js" type="text/javascript"></script>
 
+
+<script>
+	var cookieId=$.cookie('mycookie');
+	if(cookieId){
+		fn(cookieId)
+	}
+	function fn(id){
+		$('#'+id).addClass('selected').siblings().removeClass('selected');
+		$('.title').attr('class','title').addClass(id)
+	}
+	$('#skin>li').on('click',function(){
+		var id = $(this).attr('id');
+		fn(id);
+		$.cookie('mycookie','id')
+	})
 </script>
+<!-- <script>
+		var cookieId = $.cookie('myCookie');
+		if(cookieId){
+		  fn(cookieId);
+		}	
+		function fn(id){
+			$('#'+id).addClass('selected').siblings().removeClass('selected');
+			$('.title').attr('class','title').addClass(id);	
+		}	
+		$('#skin > li').on('click',function () {
+			var id = $(this).attr('id');
+			fn(id);
+			$.cookie('myCookie',id);	
+		})
+	</script> -->
+
 </body>
 </html>
