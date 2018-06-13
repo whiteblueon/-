@@ -87,10 +87,8 @@
         function run(){
             var date = new Date;
             var second =date.getSeconds();
-           
             var minute = date.getMinutes()+second/60;
-            var hour= date.getHours()+minute/60;
-            
+            var hour= date.getHours()+minute/60;           
             oHour.style.transform='rotate('+hour*30+'deg)';
             oMinute.style.transform = 'rotate(' + minute * 6 + 'deg)';
             oSecond.style.transform = 'rotate(' + second * 6 + 'deg)';
