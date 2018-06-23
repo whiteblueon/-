@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }      
+        #container{
+            position: absolute;
+            top:0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            overflow: scroll;
+            background: url('img/bg.jpg')
+        }
+        #container .img{
+            width: 125px;
+            height: 125px;
+            border: 5px solid #fff;
+            box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
+            position: absolute;
+            top: -500px;
+            left: -500px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+
+
+
+    <script>
+        const ROW = 4,
+            COL = 6;
+            NUM = COL * ROW;
+        var count = 0;
+        var oContainer = document.getElementById('container');
+
+        for(let i = 0; i<NUM; i++){
+            let oImg = new Image();
+            oImg.onload=function(){
+                count++
+                if(count==NUM*2){
+                    loadSuccess();
+                }
+            };
+            oImg.src = 'img/'+(i+1)+'.jpg';
+        }
+        for(let j = 0; j<NUM; j++){
+            let oImg = new Image();
+            oImg.onload=function(){
+                count++
+                if(count==NUM*2){
+                    loadSuccess();
+                }
+            }
+            oImg.src = 'img/thumbs/'+(j+1)+'.jpg';
+
+        }
+        function loadSuccess(){
+            var index = 0 ;
+            for(var i = 0; i<ROW;i++){
+                for(var j = 0 ;j<COL;j++){
+                    var oDiv=document.createElement('div');
+                    index++;
+                    oContainer.appendChild(oDiv);
+                    oDiv.style.background='url(img/thumbs/'+index+'.jpg) no-repeat';
+                    oDiv.className = 'img';
+                }
+                
+            }
+        }
+    </script>
+</body>
+</html>
