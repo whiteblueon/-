@@ -27,6 +27,7 @@
             position: absolute;
             top: -500px;
             left: -500px;
+            transition: all 1s ease;
         }
     </style>
 </head>
@@ -72,8 +73,21 @@
                     oContainer.appendChild(oDiv);
                     oDiv.style.background='url(img/thumbs/'+index+'.jpg) no-repeat';
                     oDiv.className = 'img';
+                    oDiv.pos={
+                        row:i,
+                        col:j
+                    }
                 }
                 
+            }
+            var spaceX=(oContainer.offsetHeight-135*4)/5;
+            var spaceY=(oContainer.offsetWidth-135*6)/7;
+            var aImg=oContainer.getElementsByTagName('div');
+            for(var k = 0 ; k<24 ;k++){
+                aImg[k].style.top=(aImg[k].pos.row+1)*spaceX+aImg[k].pos.row*135+'px';
+                aImg[k].style.left=(aImg[k].pos.col+1)*spaceY+aImg[k].pos.col*135+'px';
+                aImg[k].style.transitionDelay=(NUM - k) * 100 + 'ms';
+                aImg[k].style.transform='rotate('+parseInt(Math.random()*30)+'deg)'
             }
         }
     </script>
