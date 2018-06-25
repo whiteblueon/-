@@ -39,10 +39,31 @@
             height: 125px;
             display: block;
         }
+        #prev,#next{
+            width: 40px;
+            height: 80px;
+            position: absolute;
+            top: 50%;
+            cursor: pointer;
+            display: none;
+        }
+        #prev{
+            background: #fff url(img/prev.png) no-repeat center;
+            border-radius: 0 10px 10px 0;
+            left: 0;
+
+        }
+        #next{
+            background: #fff url(img/next.png) no-repeat center;
+            border-radius: 10px 0  0 10px;
+            right: 0;
+        }
     </style>
 </head>
 <body>
     <div id="container"></div>
+    <div id="prev"></div>
+    <div id="next"></div>
 
 
 
@@ -52,6 +73,7 @@
             NUM = COL * ROW;
         var count = 0;
         var oContainer = document.getElementById('container');
+        var iNow = null;
 
         for(let i = 0; i<NUM; i++){
             let oImg = new Image();
@@ -104,6 +126,8 @@
             }
             var iTop = (oContainer.offsetHeight-127*4)/2;
             var iLeft = (oContainer.offsetWidth-127*6)/2;
+            var oPrev = document.getElementById('prev');
+            var oNext = document.getElementById('next');
             var flag = true;//true打开 false合上
             function fn(){
                 if(flag){
@@ -119,7 +143,11 @@
                         var x = oImg.pos.col*-125;
                         var y = oImg.pos.row*-125;
                         oSpan.style.background='url(img/'+(this.idx)+'.jpg) '+x+'px '+y+'px';
+                        oSpan.style.transitionDelay=0+'ms';
+                        iNow=this.idx;
                     }
+                    oPrev.style.display='block';
+                    oNext.style.display='block';
                 }
                 else{
                     //点击打开
@@ -130,12 +158,39 @@
                         // oImg.style.transitionDelay=(NUM - k) * 100 + 'ms';
                         oImg.style.transform='rotate('+parseInt(Math.random()*40-20)+'deg)';
                         var oSpan = oImg.getElementsByTagName('span')[0];
+                        oSpan.style.transitionDelay=0+'ms';
                         oSpan.style.opacity=0;
-                        oImg.style.border= '5px solid #fff'
+                        oImg.style.border= '5px solid #fff';
                     }
+                    oPrev.style.display='none';
+                    oNext.style.display='none';
                     
+                };
+                flag=!flag;
+               
+                var aSpan = oContainer.getElementsByTagName('span');
+                oPrev.onclick=oNext.onclick=function(){
+                    if(this == oPrev){
+                        iNow--;
+                        if(iNow==0){
+                            iNow=24;
+                        }
+                        for(var i = 0 ;i<24 ;i++){
+                            aSpan[i].style.backgroundImage='url(img/'+(iNow)+'.jpg)';
+                            aSpan[i].style.transitionDelay=Math.random()*500+'ms';
+                        }
+                    }
+                    else{
+                        iNow++;
+                        if(iNow==25){
+                            iNow=1;
+                        }
+                        for(var i = 0 ;i<24 ;i++){
+                            aSpan[i].style.backgroundImage='url(img/'+(iNow)+'.jpg) ';
+                            aSpan[i].style.transitionDelay=Math.random()*500+'ms';
+                        }
+                    }
                 }
-                flag=!flag
                 
             }
         }
