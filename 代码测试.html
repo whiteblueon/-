@@ -10,33 +10,90 @@
     
 
 
-    <script>
-        addEvent(oDiv1, 'click', fn1);       
+
+
+
+
+
+
+
+    <!-- <script>
+        function mySort() {
+            var tags = new Array();//使用数组作为参数存储容器
+        //请补充你的代码
+        
+
+            for(var i =0;i<arguments.length;i++){
+                tags.push(arguments[i])
+            }
+            function sortNumber(a,b){
+                return a - b
+            }
+            tags.sort(sortNumber);
+            return tags;//返回已经排序的数组
+        }
+        var result = mySort(50,11,16,32,24,99,57,100);//传入参数个数不确定
+        console.log(result);//显示结果    
+    </script> -->
+
+
+    <!-- <script>
     
-        removeEvent(oDiv1, 'click', fn1);
+//     1.   编写程序实现如下repeat函数 , func 回调函数，timers 执行次数，wait间隔时间
+// function repeat(func,times,wait) {
+//       //请在这补全你的代码。。。   
+//     };
 
-        function addEvent(elem, type, handler, useCapture){
-            if(elem.addEventListener){
-                elem.addEventListener(type,handler,useCapture=(useCapture==undefined||useCapture==false)?false:true)
-            }else if(elem.attachEvent){
-                elem.foo=function(){
-                    handler.call(elem);
-                };
-                elem.attachEvent('on'+type,elem.foo);
-            }else{
-                elem['on'+type]=handler;
-            }
-        }
+// 调用方式如下，每隔3000毫秒输出helloworld 输出4次
+// var repeatFunc = repeat(alert,4,3000); 
+// repeatFunc('helloworld');
 
-        function removeEvent(elem, type, handler){
-            if(elem.removeEventListener){
-                elem.removeEventListener(type,handler)
-            }else if(elem.detachEvent){
-                elem.detachEvent('on'+type,elem.foo)
-            }else{
-                elem['on'+type]=null;
+
+        function repeat(func,times,wait) {
+            //   请在这补全你的代码。。。 
+            setInterval(function(repeatFunc){
+                for(var i =0;i<times;i++){
+                    func('helloworld')
+                }
+            },wait)
+            };
+        var repeatFunc = repeat(alert,4,3000); 
+        repeatFunc('helloworld');
+    </script> -->
+
+
+<!-- 2.有一行单词，空格为单词间的间隔，找出其中最长的单词和最短的单词。 -->
+    <script>
+        var result = 'We should be grateful to them';
+        var word = result.split(' ');
+        // console.log(word);
+        var arb= new Array();
+        var arc =new Array();
+
+            for(var i=0;i<word.length;i++){                       
+                
+                arb.push(word[i].toString().length);
+                
             }
-        }
+            // console.log(arb);
+            function sortNumber(a,b){
+                    return a - b;
+            }
+            arb.sort(sortNumber);
+            // console.log(arb.sort(sortNumber));
+            for(var i=0;i<word.length;i++){
+                if(word[i].toString().length==arb[0]){
+                    arc.push(word[i])
+                }
+
+                if(word[i].toString().length==(arb[word.length-1])){
+                    arc.push(word[i])
+                }
+            }
+            console.log(arc)
+            
+           
+        
     </script>
 </body>
 </html>
