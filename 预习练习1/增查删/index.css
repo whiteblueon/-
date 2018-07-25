@@ -1,0 +1,44 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+}
+li{
+    list-style: none;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+}
+.container{
+    background: #ff6600;
+    width: 450px;
+}
+h2{
+    margin-left: 180px;
+}
+.container input{
+    border: 1px solid #ccc;
+    width: 150px;
+    height: 20px;
+}
+.add{
+    border-top: 1px solid  #ccc;
+}
+.tr{
+    width: 100%;
+    /* display: block; */
+    background: #ccc;
+    height: 50px;
+    line-height: 50px;
+    margin-top: 10px;
+}
+.selected{
+    background: #ff0;
+}
+.val{
+    margin-right: -50px;
+}
