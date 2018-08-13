@@ -59,6 +59,7 @@
         case 'image':
         this.bgcolor='#ff6600';
         this.headerTitle='image';
+        
         console.log(str);
         break;
       }
