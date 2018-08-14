@@ -2,6 +2,7 @@
 <html xml:lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN"><head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="Content-Language" content="zh-CN">
+  <base href="<?php echo site_url();?>"/>
   <title>申请账号 - SYSIT个人博客</title>
     <link rel="stylesheet" href="css/oschina2011.css" type="text/css" media="screen">
   <link rel="stylesheet" href="css/thickbox.css" type="text/css" media="screen">
